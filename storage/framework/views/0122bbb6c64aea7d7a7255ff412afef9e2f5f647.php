@@ -1,7 +1,4 @@
-<?php echo $__env->make('layouts.head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
-<body>
-    <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php $__env->startSection('content'); ?>
     <section class="grey page-title">
         <div class="container">
             <div class="row">
@@ -37,6 +34,7 @@
                         <h3 class="course-title">Edit Profile</h3>
                         <div class="edit-profile">
                             <form method="post" role="form" enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
                                 <input type="hidden" name="action" value="alter" />
                                 <div class="form-group">
                                     <label>Username</label>
@@ -83,6 +81,6 @@
             <hr class="invis">
         </div>
     </section>
-    <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-</body>
-<?php /**PATH /home/ngcaobaolong/week6/resources/views/account.blade.php ENDPATH**/ ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/ngcaobaolong/week6/resources/views/account.blade.php ENDPATH**/ ?>

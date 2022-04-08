@@ -11,7 +11,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown ttmenu-half"><a href="/index.php">Home</a></li>
+                        <li class="dropdown ttmenu-half"><a href="/">Home</a></li>
                         <li><a href="/users">User list</a></li>
                         <li><a href="/quiz">Quiz</a></li>
                         <li><a href="/homework">Homework</a></li>
@@ -21,14 +21,18 @@
                             <li><a class="btn btn-primary" href="<?php echo e(route('login')); ?>"><i
                                         class="fa fa-sign-in"></i>Login/Register</a></li>
                         <?php else: ?>
-                            
-                            <li><a class="btn btn-primary" href="/account"><i
-                                        class="fa"></i>Hello, <?php echo e(Auth::user()->username); ?></a></li>
-                            <li><form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
-                                class="d-none">
-                                <a class="btn btn-primary" href="#" onclick="this.parentNode.submit()><i class="fa"></i>Logout</a>
-                                <?php echo csrf_field(); ?>
-                            </form>
+                            <li><a class="btn btn-primary" href="/account"><i class="fa"></i>Hello,
+                                    <?php echo e(Auth::user()->username); ?></a></li>
+                            <li>
+                                <a class="btn btn-primary" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+                                                                     document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
+                                    class="d-none">
+                                    <?php echo csrf_field(); ?>
+                                </form>
                             </li>
                         <?php endif; ?>
 

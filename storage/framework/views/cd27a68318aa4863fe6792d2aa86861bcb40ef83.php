@@ -14,10 +14,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="active" id="login-form-link">Login</a>
+                                    <a href="#" id="login-form-link">Login</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" id="register-form-link">Register</a>
+                                    <a href="#" class="active" id="register-form-link">Register</a>
                                 </div>
                             </div>
                             <hr>
@@ -25,16 +25,17 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="POST" id="login-form" role="form" style="display: block;" action="<?php echo e(route('login')); ?>">
+                                    <form method="POST" id="login-form" role="form" style="display: none;"
+                                        action="<?php echo e(route('login')); ?>">
                                         <?php echo csrf_field(); ?>
 
                                         <div class="row mb-3">
                                             <label for="email"
-                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Email Address')); ?></label>
+                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Username')); ?></label>
 
                                             <div class="col-md-6">
-                                                <input id="email" type="email"
-                                                    class="form-control <?php $__errorArgs = ['email'];
+                                                <input id="username" type="text"
+                                                    class="form-control <?php $__errorArgs = ['username'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -42,10 +43,10 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                    name="email" value="<?php echo e(old('email')); ?>" required
-                                                    autocomplete="email" autofocus>
+                                                    name="username" value="<?php echo e(old('username')); ?>" required
+                                                    autocomplete="username" autofocus>
 
-                                                <?php $__errorArgs = ['email'];
+                                                <?php $__errorArgs = ['username'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -121,12 +122,43 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                     </form>
-                                    <form method="POST" action="<?php echo e(route('register')); ?>" id="register-form" role="form" style="display: none;">
+                                    <form method="POST" action="<?php echo e(route('register')); ?>" id="register-form"
+                                        role="form" style="display: block;">
                                         <?php echo csrf_field(); ?>
+                                        <div class="row mb-3">
+                                            <label for="username"
+                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Username')); ?></label>
 
+                                            <div class="col-md-6">
+                                                <input id="username" type="text"
+                                                    class="form-control <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                                    name="username" value="<?php echo e(old('username')); ?>" required
+                                                    autocomplete="email">
+
+                                                <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong><?php echo e($message); ?></strong>
+                                                    </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                            </div>
+                                        </div>
                                         <div class="row mb-3">
                                             <label for="name"
-                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Name')); ?></label>
+                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Full name')); ?></label>
 
                                             <div class="col-md-6">
                                                 <input id="name" type="text"
@@ -157,7 +189,7 @@ unset($__errorArgs, $__bag); ?>
 
                                         <div class="row mb-3">
                                             <label for="email"
-                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Email Address')); ?></label>
+                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Email')); ?></label>
 
                                             <div class="col-md-6">
                                                 <input id="email" type="email"
@@ -186,7 +218,37 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
+                                        <div class="row mb-3">
+                                            <label for="phone"
+                                                class="col-md-4 col-form-label text-md-end"><?php echo e(__('Phone')); ?></label>
 
+                                            <div class="col-md-6">
+                                                <input id="phone" type="text"
+                                                    class="form-control <?php $__errorArgs = ['phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                                    name="phone" value="<?php echo e(old('phone')); ?>" required
+                                                    autocomplete="phone">
+
+                                                <?php $__errorArgs = ['phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong><?php echo e($message); ?></strong>
+                                                    </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                            </div>
+                                        </div>
                                         <div class="row mb-3">
                                             <label for="password"
                                                 class="col-md-4 col-form-label text-md-end"><?php echo e(__('Password')); ?></label>
